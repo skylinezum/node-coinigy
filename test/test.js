@@ -1,5 +1,7 @@
+var fs = require('fs');
 var Coinigy = require('../dist/index');
-var coinigy = new Coinigy('4f6e2e46ba11b3186dce6a085878b1bb', 'a24e9ade54d3407b4083f8dacfaaceae');
+var config = JSON.parse(fs.readFileSync('./test-config.json', 'utf8'));
+var coinigy = new Coinigy(config.apiKey, config.apiSecret);
 var chai = require('chai');
 chai.should();
 
@@ -9,7 +11,7 @@ describe('Coinigy API', function () {
     it('should return many keys', function () {
       return coinigy.userInfo()
       .then(function (b) {
-        b.should.have.any.keys('email');
+        b.should.have.all.keys('data', 'notifications');
       })
       .catch(function (err) {
         should.not.exist(err);
@@ -29,8 +31,5 @@ describe('Coinigy API', function () {
       });
     });
   });
-
-  //
-
 
 });
