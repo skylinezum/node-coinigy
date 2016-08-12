@@ -7,7 +7,7 @@ chai.should();
 
 describe('Coinigy API', function () {
   //userInfo
-  describe('userInfo', function () {
+/*  describe('userInfo', function () {
     it('should return many keys', function () {
       return coinigy.userInfo()
       .then(function (b) {
@@ -18,17 +18,19 @@ describe('Coinigy API', function () {
       });
     });
   });
-
+*/
   //activity log
   describe('activity', function () {
     it('should return many keys', function () {
       return coinigy.activity()
       .then(function (b) {
         b.should.have.all.keys('data', 'notifications');
-        b.open_order.should.have.all.keys('exch_name');
+        b.data.should.be.an('array');
+        //console.log(b.data);
       })
       .catch(function (err) {
         should.not.exist(err);
+        //console.log(err);
       });
     });
   });
@@ -37,11 +39,12 @@ describe('Coinigy API', function () {
       return coinigy.accounts()
       .then(function (b) {
         b.should.have.all.keys('data', 'notifications');
-        should.not.exist(b.notifications);
+        b.notifications.should.be.an('array').with.length(0);
         //b.open_order.should.have.all.keys('exch_name');
       })
       .catch(function (err) {
         should.not.exist(err);
+        //console.log(err);
       });
     });
   });
@@ -50,21 +53,32 @@ describe('Coinigy API', function () {
       return coinigy.balances()
       .then(function (b) {
         b.should.have.all.keys('data', 'notifications');
-        should.not.exist(b.notifications);
-        //b.open_order.should.have.all.keys('exch_name');
+        b.notifications.should.be.an('array').with.length(0);
       })
       .catch(function (err) {
         should.not.exist(err);
       });
     });
   });
+
   describe('orders', function () {
     it('lists all orders', function () {
       return coinigy.orders()
       .then(function (b) {
         b.should.have.all.keys('data', 'notifications');
-        should.not.exist(b.notifications);
-        //b.open_order.should.have.all.keys('exch_name');
+        b.notifications.should.be.an('array').with.length(0);
+      })
+      .catch(function (err) {
+        should.not.exist(err);
+      });
+    });
+  });
+  describe('refreshBalance', function () {
+    it('refresh balance of specific auth_ids, in this case coinbase 8304', function () {
+      return coinigy.refreshBalance(8304)
+      .then(function (b) {
+        b.should.have.all.keys('data', 'notifications');
+        console.log(b);
       })
       .catch(function (err) {
         should.not.exist(err);
