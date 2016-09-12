@@ -184,8 +184,9 @@ class Coinigy {
     return this._post('data', p);
   }
 
-  ticker() {
-    return this._post('ticker');
+  ticker(exchange_code, exchange_market) {
+    let p = {exchange_code, exchange_market};
+    return this._post('ticker', p);
   }
 }
 
