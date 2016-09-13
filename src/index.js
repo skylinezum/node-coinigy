@@ -156,7 +156,7 @@ class Coinigy {
 
   activateTradingKey(auth_id, auth_trade) {
     let p = {auth_id, auth_trade};
-    return this._post('avtivateTradingKey', p);
+    return this._post('activateTradingKey', p);
   }
 
   addOrder(auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, order_quantity) {
