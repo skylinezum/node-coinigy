@@ -6,8 +6,8 @@ var chai = require('chai');
 chai.should();
 
 describe('Coinigy API', function () {
-  //userInfo
-/*  describe('userInfo', function () {
+  //userInfo skip because not authorized to use this endpoint
+  describe.skip('userInfo', function () {
     it('should return many keys', function () {
       return coinigy.userInfo()
       .then(function (b) {
@@ -18,7 +18,7 @@ describe('Coinigy API', function () {
       });
     });
   });
-*/
+
   //activity log
   describe('activity', function () {
     it('should return many keys', function () {
@@ -78,7 +78,18 @@ describe('Coinigy API', function () {
       return coinigy.refreshBalance(8304)
       .then(function (b) {
         b.should.have.all.keys('data', 'notifications');
-        console.log(b);
+      })
+      .catch(function (err) {
+        should.not.exist(err);
+      });
+    });
+  });
+
+  describe('ticker', function () {
+    it('should get the ticker', function () {
+      return coinigy.ticker('GDAX', 'BTC/USD')
+      .then(function (b) {
+        b.should.have.all.keys('data', 'notifications');
       })
       .catch(function (err) {
         should.not.exist(err);

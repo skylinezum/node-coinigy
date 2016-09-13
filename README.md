@@ -1,9 +1,9 @@
 # node-coinigy
-Promised based Node wrapper for Coinigy's REST API
+Promise based Node wrapper for Coinigy's REST API
 
 [Coinigy API Documentation](http://docs.coinigy.apiary.io/)
 
->userInfo may not work. I believe it may not be a public endpoint.
+>userInfo is not authorized by default as it is a security risk.
 
 # Install
 ```bash
@@ -22,5 +22,9 @@ coinigy.activity()
 })
 .catch(function (err) {
   console.log(err);
-})
+});
 ```
+
+# Test
+
+Test coverage is very small, so there are no guarantees that all endpoints work.
