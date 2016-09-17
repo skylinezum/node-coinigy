@@ -159,8 +159,9 @@ class Coinigy {
     return this._post('activateTradingKey', p);
   }
 
-  addOrder(auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, order_quantity) {
+  addOrder(auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, stop_price, order_quantity) {
     let p = {auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, order_quantity};
+    if (stop_price != null) p.stop_price = stop_price;
     return this._post('addOrder', p);
   }
 
