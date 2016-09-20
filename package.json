@@ -1,6 +1,6 @@
 {
   "name": "node-coinigy",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Promised based node wrapper for Coinigy REST API",
   "main": "./dist/index.js",
   "scripts": {

@@ -56,8 +56,7 @@ class Coinigy {
       },
     })
     .then(function (res) {
-      console.log(res);
-      //if (res.data[0].hasOwnProperty('err_num')) throw res.data;
+      if (!res.data.hasOwnProperty('data')) throw res.data;
       return res.data;
     });
   }
