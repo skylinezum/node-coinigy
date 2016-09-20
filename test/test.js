@@ -34,6 +34,7 @@ describe('Coinigy API', function () {
       });
     });
   });
+
   describe('accounts', function () {
     it('lists all accounts', function () {
       return coinigy.accounts()
@@ -48,6 +49,7 @@ describe('Coinigy API', function () {
       });
     });
   });
+
   describe('balances', function () {
     it('lists all account balance', function () {
       return coinigy.balances()
@@ -73,6 +75,7 @@ describe('Coinigy API', function () {
       });
     });
   });
+
   describe('refreshBalance', function () {
     it('refresh balance of specific auth_ids, in this case coinbase 8304', function () {
       return coinigy.refreshBalance(8304)

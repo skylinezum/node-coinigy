@@ -1,4 +1,5 @@
 import axios from 'axios';
+import querystring from 'querystring';
 
 class Coinigy {
   constructor(apiKey, apiSecret) {
@@ -44,6 +45,21 @@ class Coinigy {
       '1061': 'TRY/CATCH EXCEPTION',
       '1062': 'NO API METHOD PROVIDED',
     };
+  }
+
+  _postEncoded(api, params) {
+    return axios.post(this.endpoints[api], querystring.stringify(params), {
+      baseURL: this.url,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-API-KEY': this.apiKey,
+        'X-API-SECRET': this.apiSecret,
+      },
+    })
+    .then(function (res) {
+      if (!res.data.hasOwnProperty('data')) throw res.data;
+      return res.data;
+    });
   }
 
   _post(api, params) {
@@ -163,12 +179,12 @@ class Coinigy {
   addOrder(auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, stop_price, order_quantity) {
     let p = {auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, order_quantity};
     if (stop_price != null) p.stop_price = stop_price;
-    return this._post('addOrder', p);
+    return this._postEncoded('addOrder', p);
   }
 
   cancelOrder(internal_order_id) {
     let p = {internal_order_id};
-    return this._post('cancelOrder', p);
+    return this._postEncoded('cancelOrder', p);
   }
 
   exchanges() {

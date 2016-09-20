@@ -5,7 +5,7 @@ Promise based Node wrapper for Coinigy's REST API
 
 >userInfo is not authorized by default as it is a security risk.
 >Coinigy API doesn't support `application/json` body for certain endpoints and requires `application/x-www-form-urlencoded`
->Known endpoints to fail - addOrder, cancelOrder
+>Known endpoints to fail - addOrder, cancelOrder. I support them still, but change it back to json in the future.
 
 # Install
 ```bash
@@ -30,3 +30,18 @@ coinigy.activity()
 # Test
 
 Test coverage is very small, so there are no guarantees that all endpoints work.
+
+To run tests, create test-config.json using test-config-example.json.
+
+```bash
+npm test
+```
+
+# Contributing
+
+I made this very quickly so if anyone would like to help, please feel free to make a PR
+
+TODO:
+
+1. Increase test coverage
+2. Documentation
