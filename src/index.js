@@ -56,6 +56,7 @@ class Coinigy {
       },
     })
     .then(function (res) {
+      if (res.data[0].hasOwnProperty('err_num')) throw res.data;
       return res.data;
     });
   }
