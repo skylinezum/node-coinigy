@@ -5,7 +5,7 @@ class Coinigy {
   constructor(apiKey, apiSecret) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
-    this.url = 'https://www.coinigy.com/api/v1';
+    this.url = 'https://api.coinigy.com/api/v1';
     this.endpoints = {
       //Account Data
       userInfo: '/userInfo',

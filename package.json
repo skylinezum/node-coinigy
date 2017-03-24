@@ -1,6 +1,6 @@
 {
   "name": "node-coinigy",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Promised based node wrapper for Coinigy REST API",
   "main": "./dist/index.js",
   "scripts": {
@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/skylinezum/node-coinigy#readme",
   "devDependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-preset-es2015": "^6.13.2",
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
     "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.2.0"
   },
   "dependencies": {
-    "axios": "^0.13.1"
+    "axios": "^0.15.3"
   }
 }
