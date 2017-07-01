@@ -3,9 +3,8 @@ Promise based Node wrapper for Coinigy's REST API
 
 [Coinigy API Documentation](http://docs.coinigy.apiary.io/)
 
->userInfo is not authorized by default as it is a security risk.
 >Coinigy API doesn't support `application/json` body for certain endpoints and requires `application/x-www-form-urlencoded`
->Known endpoints to fail - addOrder, cancelOrder. I support them still, but change it back to json in the future.
+>Known endpoints to fail - addOrder, cancelOrder, newsFeed. I support them still, but change it back to json in the future.
 
 # Install
 ```bash

@@ -119,7 +119,7 @@ class Coinigy {
   }
 
   newsFeed() {
-    return this._post('newsFeed');
+    return this._postEncoded('newsFeed');
   }
 
   updateUser(first_name, last_name, company, phone, street1, street2, city, state, zip, country) {
