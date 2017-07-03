@@ -1,12 +1,12 @@
 {
   "name": "node-coinigy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Promised based node wrapper for Coinigy REST API",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "yarn run build && mocha test/test.js",
+    "test": "npm build && mocha test/test.js",
     "build": "babel src --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "yarn run build"
+    "prepublish": "npm build"
   },
   "repository": {
     "type": "git",
