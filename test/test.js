@@ -11,7 +11,7 @@ const sleep = (sec) => {
 }
 
 describe('Coinigy API', function () {
-  describe.skip('Account Data', function() {
+  describe('Account Data', function() {
     //userInfo skip because not authorized to use this endpoint
     describe('userInfo', function () {
       it('should return many keys', function () {
@@ -20,12 +20,13 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
 
-    sleep(1);
+
 
     describe('activity', function () {
       it('should return many keys', function () {
@@ -36,28 +37,12 @@ describe('Coinigy API', function () {
           //console.log(b.data);
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
-
-    describe('push notifications', function() {
-      it('should have keys', function () {
-        return coinigy.pushNotifications()
-        .then(function (b) {
-          b.should.have.all.keys('data', 'notifications');
-        })
-        .catch(function (err) {
-          should.not.exist(err);
-          //console.log(err);
-        });
-      });
-    });
-
-    sleep(1);
 
     describe('accounts', function () {
       it('lists all accounts', function () {
@@ -68,13 +53,12 @@ describe('Coinigy API', function () {
           //b.open_order.should.have.all.keys('exch_name');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('balances', function () {
       it('lists all account balance', function () {
@@ -84,27 +68,25 @@ describe('Coinigy API', function () {
           b.notifications.should.be.an('array').with.length(0);
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('balance history', function() {
       it('should have keys', function () {
-        return coinigy.balanceHistory('2017-07-01')
+        return coinigy.balanceHistory({date: '2017-07-01'})
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('orders', function () {
       it('lists all orders', function () {
@@ -114,12 +96,11 @@ describe('Coinigy API', function () {
           b.notifications.should.be.an('array').with.length(0);
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('alerts', function() {
       it('should have keys', function () {
@@ -128,13 +109,12 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('user watch list', function() {
       it('should have keys', function () {
@@ -143,13 +123,12 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('news feed', function() {
       it('should have keys', function () {
@@ -158,17 +137,18 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
           //console.log(err);
         });
       });
+      sleep(1);
     });
 
     //end account data
   });
 
   //accout functions
-  describe.skip('Account Functions', function() {
+  describe('Account Functions', function() {
 
     //TODO update user
     //TODO save preferences
@@ -177,17 +157,16 @@ describe('Coinigy API', function () {
 
     describe('refreshBalance', function () {
       it('refresh balance of specific auth_ids, in this case coinbase 8304', function () {
-        return coinigy.refreshBalance(8304)
+        return coinigy.refreshBalance({auth_id: 13605})
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     //TODO add alert
     //TODO delete alert
@@ -207,12 +186,11 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('markets', function () {
       it('should get the markets', function () {
@@ -221,37 +199,39 @@ describe('Coinigy API', function () {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('data', function () {
       it('should get the data', function () {
-        return coinigy.data('GDAX', 'BTC/USD', 'history')
+        return coinigy.data({exchange_code: 'GDAX', exchange_market: 'BTC/USD', type: 'history'})
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
-
-    sleep(1);
 
     describe('ticker', function () {
       it('should get the ticker', function () {
-        return coinigy.ticker('GDAX', 'BTC/USD')
+        return coinigy.ticker({
+          exchange_code: 'GDAX',
+          exchange_market: 'BTC/USD'
+        })
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
         .catch(function (err) {
-          should.not.exist(err);
+          err.should.not.exist;
         });
       });
+      sleep(1);
     });
   });
 

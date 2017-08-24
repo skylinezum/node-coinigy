@@ -10,7 +10,6 @@ class Coinigy {
       //Account Data
       userInfo: '/userInfo',
       activity: '/activity',
-      pushNotifications: '/pushNotifications',
       accounts: '/accounts',
       balances: '/balances',
       balanceHistory: '/balanceHistory',
@@ -85,23 +84,17 @@ class Coinigy {
     return this._post('activity');
   }
 
-  pushNotifications() {
-    return this._post('pushNotifications');
-  }
-
   accounts() {
     return this._post('accounts');
   }
 
   //0 or 1: return empty balances, string: comma-separated or underscore-separated list
-  balances(show_nils, auth_ids) {
-    let p = { show_nils, auth_ids };
+  balances(p) {
     return this._post('balances', p);
   }
 
   //Datetime: "2016-07-01" format
-  balanceHistory(date) {
-    let p = { date };
+  balanceHistory(p) {
     return this._post('balanceHistory', p);
   }
 
@@ -122,18 +115,15 @@ class Coinigy {
     return this._postEncoded('newsFeed');
   }
 
-  updateUser(first_name, last_name, company, phone, street1, street2, city, state, zip, country) {
-    let p = {first_name, last_name, company, phone, street1, street2, city, state, zip, country};
+  updateUser(p) {
     return this._post('updateUser', p);
   }
 
-  savePrefs(alert_email, alert_sms, trade_email, trade_sms, balance_email) {
-    let p = {alert_email, alert_sms, trade_email, trade_sms, balance_email};
+  savePrefs(p) {
     return this._post('savePrefs', p);
   }
 
-  updateTickers(exch_mkt_ids) {
-    let p = {exch_mkt_ids};
+  updateTickers(p) {
     return this._post('updateTickers', p);
   }
 
@@ -141,49 +131,39 @@ class Coinigy {
     return this._post('orderTypes');
   }
 
-  refreshBalance(auth_id) {
-    let p = {auth_id};
+  refreshBalance(p) {
     return this._post('refreshBalance', p);
   }
 
-  addAlert(exch_code, market_name, alert_price, alert_note) {
-    let p = {exch_code, market_name, alert_price, alert_note};
+  addAlert(p) {
     return this._post('addAlert', p);
   }
 
-  deleteAlert(alert_id) {
-    let p = {alert_id};
+  deleteAlert(p) {
     return this._post('deleteAlert', p);
   }
 
-  addApiKey(api_key, api_secret, api_exch_id, api_nickname, api_optional1) {
-    let p = {api_key, api_secret, api_exch_id, api_nickname, api_optional1};
+  addApiKey() {
     return this._post('addApiKey', p);
   }
 
-  deleteApiKey(auth_id) {
-    let p = {auth_id};
+  deleteApiKey(p) {
     return this._post('deleteApiKey', p);
   }
 
-  activateApiKey(auth_id, auth_active) {
-    let p = {auth_id, auth_active};
+  activateApiKey(p) {
     return this._post('activateApiKey', p);
   }
 
-  activateTradingKey(auth_id, auth_trade) {
-    let p = {auth_id, auth_trade};
+  activateTradingKey(p) {
     return this._post('activateTradingKey', p);
   }
 
-  addOrder(auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, stop_price, order_quantity) {
-    let p = {auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, order_quantity};
-    if (stop_price != null) p.stop_price = stop_price;
+  addOrder(p) {
     return this._postEncoded('addOrder', p);
   }
 
-  cancelOrder(internal_order_id) {
-    let p = {internal_order_id};
+  cancelOrder(p) {
     return this._postEncoded('cancelOrder', p);
   }
 
@@ -191,19 +171,16 @@ class Coinigy {
     return this._post('exchanges');
   }
 
-  markets(exchange_code) {
-    let p = {exchange_code};
+  markets(p) {
     return this._post('markets', p);
   }
 
   //types = 'history, asks, bids, orders, all'
-  data(exchange_code, exchange_market, type) {
-    let p = {exchange_code, exchange_market, type};
+  data(p) {
     return this._post('data', p);
   }
 
-  ticker(exchange_code, exchange_market) {
-    let p = {exchange_code, exchange_market};
+  ticker(p) {
     return this._post('ticker', p);
   }
 }
