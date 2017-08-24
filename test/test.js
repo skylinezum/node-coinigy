@@ -1,6 +1,5 @@
-var fs = require('fs');
 var Coinigy = require('../dist/index');
-var config = JSON.parse(fs.readFileSync('./test-config.json', 'utf8'));
+var config = require('../test-config.json');
 var coinigy = new Coinigy(config.apiKey, config.apiSecret);
 var chai = require('chai');
 chai.should();
@@ -156,8 +155,8 @@ describe('Coinigy API', function () {
     //TODO order types
 
     describe('refreshBalance', function () {
-      it('refresh balance of specific auth_ids, in this case coinbase 8304', function () {
-        return coinigy.refreshBalance({auth_id: 13605})
+      it('refresh balance of specific auth_ids, in this case coinbase', function () {
+        return coinigy.refreshBalance({auth_id: })
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
