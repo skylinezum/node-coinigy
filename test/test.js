@@ -10,7 +10,7 @@ const sleep = (sec) => {
 }
 
 describe('Coinigy API', function () {
-  describe('Account Data', function() {
+  describe.skip('Account Data', function() {
     //userInfo skip because not authorized to use this endpoint
     describe('userInfo', function () {
       it('should return many keys', function () {
@@ -75,7 +75,7 @@ describe('Coinigy API', function () {
 
     describe('balance history', function() {
       it('should have keys', function () {
-        return coinigy.balanceHistory({date: '2017-07-01'})
+        return coinigy.balanceHistory({date: '2017-12-01'})
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
@@ -156,7 +156,7 @@ describe('Coinigy API', function () {
 
     describe('refreshBalance', function () {
       it('refresh balance of specific auth_ids, in this case coinbase', function () {
-        return coinigy.refreshBalance({auth_id: })
+        return coinigy.refreshBalance({auth_id: '13605'})
         .then(function (b) {
           b.should.have.all.keys('data', 'notifications');
         })
@@ -175,9 +175,24 @@ describe('Coinigy API', function () {
     //TODO activate trading key
     //TODO add order
     //TODO cancel order
+    //TODO refreshOrders
+
+    describe('refreshOrders', function () {
+      it('refresh orders of specific auth_ids, in this case coinbase', function () {
+        this.timeout(5000);
+        return coinigy.refreshOrders({auth_id: '13605'})
+        .then(function (b) {
+          b.should.have.all.keys('data', 'notifications');
+        })
+        .catch(function (err) {
+          err.should.not.exist;
+        });
+      });
+      sleep(1);
+    });
   });
 
-  describe('Market Data', function() {
+  describe.skip('Market Data', function() {
     describe('exchanges', function () {
       it('should get the exchanges', function () {
         return coinigy.exchanges()

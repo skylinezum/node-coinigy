@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Complete unit tests (need a way to publicly test addOrder etc...)
 - Coverage indicator
 
+## [2.0.1] - 2017-12-27
+### Added
+- include refreshOrders
+
 ## [2.0.0] - 2017-08-24
 ### Added
 - created a change log to better document this project now that more people are using it.

@@ -31,6 +31,7 @@ class Coinigy {
       activateTradingKey: '/activateTradingKey',
       addOrder: '/addOrder',
       cancelOrder: '/cancelOrder',
+      refreshOrders: '/refreshOrders',
       //Market Data
       exchanges: '/exchanges',
       markets: '/markets',
@@ -165,6 +166,10 @@ class Coinigy {
 
   cancelOrder(p) {
     return this._postEncoded('cancelOrder', p);
+  }
+
+  refreshOrders(p) {
+    return this._post('refreshOrders', p);
   }
 
   exchanges() {

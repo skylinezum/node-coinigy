@@ -51,6 +51,7 @@ coinigy.activity()
 - activateTradingKey {auth_id, auth_trade}
 - addOrder {auth_id, exch_id, mkt_id, order_type_id, price_type_id, limit_price, stop_price?, order_quantity}
 - cancelOrder {internal_order_id}
+- refreshOrders {auth_id}
 - exchanges
 - markets {exchange_code}
 - data {exchange_code, exchange_market, type}
