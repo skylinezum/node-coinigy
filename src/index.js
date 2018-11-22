@@ -5,7 +5,7 @@ class Coinigy {
   constructor(apiKey, apiSecret) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
-    this.url = 'https://api.coinigy.com/api/v1';
+    this.url = 'https://api.coinigy.com/api/v2';
     this.endpoints = {
       //Account Data
       userInfo: '/userInfo',
@@ -47,6 +47,21 @@ class Coinigy {
     };
   }
 
+  _get(endpoint) {
+    return axios.get(endpoint, {
+      baseURL: this.url,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-KEY': this.apiKey,
+        'X-API-SECRET': this.apiSecret,
+      },
+    })
+    .then(function (res) {
+      if (!res.data.hasOwnProperty('data')) throw res.data;
+      return res.data;
+    });
+  }
+
   _postEncoded(api, params) {
     return axios.post(this.endpoints[api], querystring.stringify(params), {
       baseURL: this.url,
@@ -77,116 +92,8 @@ class Coinigy {
     });
   }
 
-  userInfo() {
-    return this._post('userInfo');
-  }
-
-  activity() {
-    return this._post('activity');
-  }
-
-  accounts() {
-    return this._post('accounts');
-  }
-
-  //0 or 1: return empty balances, string: comma-separated or underscore-separated list
-  balances(p) {
-    return this._post('balances', p);
-  }
-
-  //Datetime: "2016-07-01" format
-  balanceHistory(p) {
-    return this._post('balanceHistory', p);
-  }
-
-  orders() {
-    return this._post('orders');
-  }
-
-
-  alerts() {
-    return this._post('alerts');
-  }
-
-  userWatchList() {
-    return this._post('userWatchList');
-  }
-
-  newsFeed() {
-    return this._postEncoded('newsFeed');
-  }
-
-  updateUser(p) {
-    return this._post('updateUser', p);
-  }
-
-  savePrefs(p) {
-    return this._post('savePrefs', p);
-  }
-
-  updateTickers(p) {
-    return this._post('updateTickers', p);
-  }
-
-  orderTypes() {
-    return this._post('orderTypes');
-  }
-
-  refreshBalance(p) {
-    return this._post('refreshBalance', p);
-  }
-
-  addAlert(p) {
-    return this._post('addAlert', p);
-  }
-
-  deleteAlert(p) {
-    return this._post('deleteAlert', p);
-  }
-
-  addApiKey() {
-    return this._post('addApiKey', p);
-  }
-
-  deleteApiKey(p) {
-    return this._post('deleteApiKey', p);
-  }
-
-  activateApiKey(p) {
-    return this._post('activateApiKey', p);
-  }
-
-  activateTradingKey(p) {
-    return this._post('activateTradingKey', p);
-  }
-
-  addOrder(p) {
-    return this._postEncoded('addOrder', p);
-  }
-
-  cancelOrder(p) {
-    return this._postEncoded('cancelOrder', p);
-  }
-
-  refreshOrders(p) {
-    return this._post('refreshOrders', p);
-  }
-
-  exchanges() {
-    return this._post('exchanges');
-  }
-
-  markets(p) {
-    return this._post('markets', p);
-  }
-
-  //types = 'history, asks, bids, orders, all'
-  data(p) {
-    return this._post('data', p);
-  }
-
-  ticker(p) {
-    return this._post('ticker', p);
+  ordersHistory(p) {
+    return _get('')
   }
 }
 
