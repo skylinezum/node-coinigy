@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Travis CI
 - Complete unit tests (need a way to publicly test addOrder etc...)
 - Coverage indicator
+- Added apiRoot change support
 
 ## [2.0.1] - 2017-12-27
 ### Added

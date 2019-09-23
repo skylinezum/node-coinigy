@@ -14,7 +14,7 @@ npm install node-coinigy --save
 # Use
 ```
 var Coinigy = require('node-coinigy');
-var coinigy = new Coinigy('your-api-key', 'your-api-secret');
+var coinigy = new Coinigy('your-api-key', 'your-api-secret', 'api-root'); // 'https://api.coinigy.com/api/v1' is default for api-root
 
 coinigy.activity()
 .then(function (body) {

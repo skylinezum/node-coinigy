@@ -2,10 +2,10 @@ import axios from 'axios';
 import querystring from 'querystring';
 
 class Coinigy {
-  constructor(apiKey, apiSecret) {
+  constructor(apiKey, apiSecret, apiRoot) {
     this.apiKey = apiKey;
     this.apiSecret = apiSecret;
-    this.url = 'https://api.coinigy.com/api/v1';
+    this.url = apiRoot || 'https://api.coinigy.com/api/v1';
     this.endpoints = {
       //Account Data
       userInfo: '/userInfo',
